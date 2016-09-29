@@ -4,7 +4,7 @@ module.exports = {
   create_namespace: function(path, io){
     // console.log('valuef or path is: ', path);
     // console.log('valuef or io is: ', io);
-    // console.log('services.js:   ', io.of)
+    console.log('services.js:   ', io.of)
   	var nsp = io.of(path);
   	nsp.on('connection', (socket) => {
   	  console.log('a user has connected');
