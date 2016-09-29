@@ -16,16 +16,19 @@ module.exports = (app, io) => {
   var isAuth = require('./isAuthenticated.js');
 
   app.route('/pad/create')
-var passport = require('passport');
-var isAuth = require('./isAuthenticated.js');
-
-module.exports = (app) => {
-  app.route('/pizza')
     .get((req, res) => {
       ukey = '/' + chance.string({length:5, pool:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
       create_namespace(ukey, io);
       cached[ukey] = ukey;
       res.send(ukey);
+    });
+ 
+  app.route('/auth/github')
+    .get((req, res) => {
+      passport.authenticate('github', { failureRedirect: '/'}),
+      function(req, res) {
+        res.redirect('/'); // 
+      }
     });
 
   console.log(path.join(__dirname, '/../../client/pad.html'));
@@ -65,7 +68,11 @@ module.exports = (app) => {
       res.redirect('/');// need to redirect elsewhere...
     });
 
-  // app.route('/[^\/]', isAuth(req, res, next));
+
+  /*function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}*/
 
   // commenting out for now, but this pretty much checks for existing auth. 
   // app.route('/[^\/]', isAuth(req, res, next));
