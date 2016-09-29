@@ -11,7 +11,6 @@ var cached = {}, ukey = '';
 module.exports = (app, io) => {
   // app.use(express.static(__dirname + '/../../client/app'));
 
-
   var passport = require('passport');
   var isAuth = require('./isAuthenticated.js');
 
@@ -44,8 +43,6 @@ module.exports = (app, io) => {
   // for socket.io
   // link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
   
-  // end for socket
-};
   app.get('/auth/github',
     // console.log('entered before here');
     passport.authenticate('github', { scope: ['user', 'public_repo'] }),
