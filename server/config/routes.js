@@ -16,6 +16,11 @@ module.exports = (app, io) => {
   var isAuth = require('./isAuthenticated.js');
 
   app.route('/pad/create')
+var passport = require('passport');
+var isAuth = require('./isAuthenticated.js');
+
+module.exports = (app) => {
+  app.route('/pizza')
     .get((req, res) => {
       ukey = '/' + chance.string({length:5, pool:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
       create_namespace(ukey, io);
