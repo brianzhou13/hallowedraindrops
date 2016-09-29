@@ -19,6 +19,13 @@ module.exports = (app, express) => {
     extended: true
   }));
 
+  // tutorial put it after bodyparser
+  app.use(methodOverride());
+  app.use(session({ secret: 'pizza kitty', resave: false, saveUninitialized: false}))
+  // resave: forces the session to be saved back to the session store
+  // saveUninitialized: forces a session that is 'uninitialized' to be saved to the store
+  	// having it false will help race conditions and storage
+
   // code for passport
   app.use(session({ secret: 'pizza kitty', resave: false, saveUninitialized: false}))
   app.use(passport.initialize());
