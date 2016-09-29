@@ -9,21 +9,25 @@ var githubKeys = require('./env/config.js').github;
 module.exports = function(passport) {
 
 	passport.serializeUser(function(user, done) {
+		console.log('user is: ', user);
 		done(null, user);
 	});
 
 	passport.deserializeUser(function(obj, done) {
-		done(nul, obj);
+		done(null, obj);
 	});
+
+	console.log('github keys are: ', githubKeys);
 
 	passport.use(new GitHubStrategy({
 		clientID: githubKeys.GITHUB_CLIENT_ID,
-		clientSecret: githubKeys.GITHUB_CLLIENT_SECRET,
-		callbackURL: "http://127.0.0.1:8080/" // not sure about this
+		clientSecret: githubKeys.GITHUB_CLIENT_SECRET,
+		callbackURL: githubKeys.GITHUB_CALLBACK_URL // not sure about this
 	}, 
 	function(accessToken, refreshToken, profile, done) {
 		// async verification
 		process.nextTick(function() {
+			console.log('entered into the passport use part');
 			// **FIX 
 			// once we have a db setup, we would store their info
 			// into our db

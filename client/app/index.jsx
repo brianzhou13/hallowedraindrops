@@ -105,11 +105,29 @@ class App extends React.Component {
     this.socket.emit('text change', text);
   }
 
+  authFn() {
+    document.location.href='/auth/github';
+    // $.ajax({
+    //   method: 'GET',
+    //   url: 'http://127.0.0.1:8080/auth/github',
+    //   // data: {code: this.state.text},
+    //   success: (data) => {
+    //     console.log('auth value is: ', data);
+    //     // $('.response').append(data);
+    //   },
+    //   error: (err) => {
+    //     console.log('error is: ', err);
+    //   }
+    // });
+  }
+
   render () {
   	return (
   	  <div>
   	  	<button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
+        <a href="/auth/github">Login with GitHub</a>
+        <button onClick={this.authFn.bind(this)}>Github</button>
         <div>
           Response is: <p className="response"></p>
         </div>

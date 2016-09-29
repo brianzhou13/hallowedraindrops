@@ -43,26 +43,31 @@ module.exports = (app) => {
   
   // end for socket
 };
+  app.get('/auth/github',
+    // console.log('entered before here');
+    passport.authenticate('github', { scope: ['user', 'public_repo'] }),
+    (req, res) => {
+      console.log('success');
+    }
+  );
  
-  app.route('/auth/github')
-    .get((req, res) => {
-      passport.authenticate('github', { failureRedirect: '/'}),
-      function(req, res) {
-        res.redirect('/'); // 
-      }
+  app.get('/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: '/'}),
+    (req, res) => {
+      console.log('entered into auth/github/callback');
+      res.redirect('/'); 
+      // res.render('/');
     });
 
-  app.route('/logout')
-    .get((req, res) => {
+  app.get('/logout',
+    (req, res) => {
       req.logout();
       res.redirect('/');// need to redirect elsewhere...
     });
 
   // app.route('/[^\/]', isAuth(req, res, next));
 
-  /*function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}*/
+  // commenting out for now, but this pretty much checks for existing auth. 
+  // app.route('/[^\/]', isAuth(req, res, next));
 
 };
