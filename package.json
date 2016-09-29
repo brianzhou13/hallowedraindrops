@@ -43,6 +43,8 @@
     "eslint": "^3.4.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "express-session": "^1.14.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-concat": "^1.0.1",
@@ -53,8 +55,11 @@
     "grunt-mocha-test": "^0.13.2",
     "grunt-nodemon": "^0.4.2",
     "grunt-shell": "^2.0.0",
+    "method-override": "^2.3.6",
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.10",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -63,6 +68,7 @@
     "request-promise": "^4.1.1",
     "sinon": "^1.17.6",
     "socket.io": "^1.4.8",
+    "utils": "^0.3.1",
     "webpack": "^1.13.2"
   },
   "devDependencies": {

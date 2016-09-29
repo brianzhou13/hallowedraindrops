@@ -11,6 +11,10 @@ var cached = {}, ukey = '';
 module.exports = (app, io) => {
   // app.use(express.static(__dirname + '/../../client/app'));
 
+
+  var passport = require('passport');
+  var isAuth = require('./isAuthenticated.js');
+
   app.route('/pad/create')
     .get((req, res) => {
       ukey = '/' + chance.string({length:5, pool:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
@@ -33,4 +37,27 @@ module.exports = (app, io) => {
   // link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
   
   // end for socket
+};
+ 
+  app.route('/auth/github')
+    .get((req, res) => {
+      passport.authenticate('github', { failureRedirect: '/'}),
+      function(req, res) {
+        res.redirect('/'); // 
+      }
+    });
+
+  app.route('/logout')
+    .get((req, res) => {
+      req.logout();
+      res.redirect('/');// need to redirect elsewhere...
+    });
+
+  // app.route('/[^\/]', isAuth(req, res, next));
+
+  /*function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}*/
+
 };
