@@ -42,7 +42,6 @@ module.exports = (app, io) => {
       res.redirect('/');
     });
 
-
   console.log(path.join(__dirname, '/../../client/pad.html'));
   app.route('/*')
     .get((req, res) => {
@@ -52,7 +51,6 @@ module.exports = (app, io) => {
         res.send(404);
     });
 
-  
     /*function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login')
@@ -60,4 +58,10 @@ module.exports = (app, io) => {
 
     // commenting out for now, but this pretty much checks for existing auth. 
     // app.route('/[^\/]', isAuth(req, res, next));
+  // ** below code block is used for the server setup
+  
+  // for socket.io
+  // link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
+  
+  // end for socket
 };

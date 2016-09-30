@@ -27,7 +27,6 @@ if(!module.parent) {
 var io = require('socket.io')(server);
 require('./config/routes.js')(app, io);
 
-
 module.exports = {
   app: app
 };
