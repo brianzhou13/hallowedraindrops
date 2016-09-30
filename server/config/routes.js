@@ -19,6 +19,30 @@ module.exports = (app, io) => {
       res.send(ukey);
     });
 
+  var passport = require('passport');
+  var isAuth = require('./isAuthenticated');
+
+  app.get('/auth/github',
+    passport.authenticate('github', {scope: ['user', 'public_repo']}),
+    (req, res) => {
+      console.log('success'); 
+    }
+  );
+
+  app.get('/auth/github/callback',
+    passport.authenticate('github', {failureRedirect: '/'}),
+    (req, res) => {
+      console.log('entered into the auth/github/callback');
+      res.redirect('/');
+    });
+
+  app.get('/logout',
+    (req, res) => {
+      req.logout();
+      res.redirect('/');
+    });
+
+
   console.log(path.join(__dirname, '/../../client/pad.html'));
   app.route('/*')
     .get((req, res) => {
@@ -28,9 +52,12 @@ module.exports = (app, io) => {
         res.send(404);
     });
 
-  // ** below code block is used for the server setup
-  // for socket.io
-  // link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
   
-  // end for socket
+    /*function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) { return next(); }
+    res.redirect('/login')
+    }*/
+
+    // commenting out for now, but this pretty much checks for existing auth. 
+    // app.route('/[^\/]', isAuth(req, res, next));
 };

@@ -34,3 +34,6 @@ client/public
 
 # Text files used for REPL service
 REPL_service/config/*.txt
+
+#Files used for Github Auth
+server/config/env/config.js
