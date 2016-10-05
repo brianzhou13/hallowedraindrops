@@ -20,12 +20,12 @@ class BlogNavigation extends React.Component {
 	render () { // we also need to build the nav bar on the right
 		return (
 		  <div> 
-		  	<NavBar fixedTop fluid staticTop>
-		  		<Nav bsStyle="tabs" pullLeft>
-		  			<NavItem pullLeft>Code</NavItem>
+		  	<NavBar fixedTop fluid staticTop className="blog-nav">
+		  		<Nav bsStyle="tabs">
+		  			<NavItem pullLeft className="blog-nav-right">Back to Coding</NavItem>
 					</Nav>
-					<Nav bsStyle="tabs" pullRight>
-						<NavItem pullRight>Profile</NavItem>
+					<Nav bsStyle="tabs">
+						<NavItem pullRight className="blog-nav-left">View my Profile</NavItem>
 					</Nav>
 				</NavBar>
 		  </div>

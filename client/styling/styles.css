@@ -217,3 +217,21 @@ div.jumbotron {
     z-index: -999;
 }
 
+/* blog navbar */
+.blog-nav.nav.navbar-nav.navbar-right li a {
+    color: #de7c00;
+}
+
+/* aims to try and remove the button highlighting */
+.btn:focus { 
+  outline: none;
+}
+
+.blog-nav-right {
+    margin-left: 100px;
+}
+
+.blog-nav-left {
+    margin-right: 100px;
+}
+

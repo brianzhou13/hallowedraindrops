@@ -8,6 +8,8 @@ import Index from './app/index.jsx';
 import Editor from './app/editor.jsx';
 import Home from './app/home.jsx';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import Blog from './app/blog-component/blog.jsx';
+import Blogger from './app/blog-component/blogger.jsx';
 
 // bootstrap: https://medium.com/@victorleungtw/how-to-use-webpack-with-react-and-bootstrap-b94d33765970#.yd8htlxw0
 
@@ -15,15 +17,9 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router';
 
-// Changes in Routes.js include removing the '/' component to be 'App' to be 'Home'
-
 console.log('entered into the react-router');
 
-// for browserHistory, use: 	<Router history={browserHistory}>
-// used to use hashHistory: <Router history={hashHistory}>
-// don't use this route<Route path ="editor/:editorId" component={Editor} />
-
-// need a blog path
+// need a correct way to route to blog
 
 ReactDOM.render(
 	<Router history={browserHistory}>
@@ -32,7 +28,7 @@ ReactDOM.render(
 			<Route path ="/editor/:editorid" component={Editor} />
 			<Route path ="home" component={Home}/>
 			<Route path ="blog" component={Blog}/>
-				<Route path ="/:bloggername" component={Blogger}/>
+			<Route path ="/blog/:bloggername" component={Blogger}/>
 		</Route>
 	</Router>
 	, document.getElementById('app'));
