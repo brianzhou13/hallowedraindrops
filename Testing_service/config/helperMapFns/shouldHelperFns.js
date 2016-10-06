@@ -1,6 +1,9 @@
 var chai = require('chai');
 var should = chai.should();
 
+/* this file will replace older previous files:
+ * fn.js , general.js , int.js , obj.js, string.js
+ */
 module.exports = {
 
 	/*
