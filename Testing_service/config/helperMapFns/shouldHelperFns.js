@@ -1,11 +1,13 @@
 var chai = require('chai');
 var should = chai.should();
+var expect = chai.expect();
 
 /* this file will replace older previous files:
  * fn.js , general.js , int.js , obj.js, string.js
  */
 module.exports = {
 
+	console.log('entered');
 	/*
 	 * overall: we'll be testing two versions, with
 	 * the first version being the submitted code made
@@ -18,31 +20,34 @@ module.exports = {
 
 	// subm/ans should exist
 	shouldExist : function (subm, ans) {
-		should.exist(subm);
-		should.exist(ans);
+		(subm).should.exist(subm);
 	},
 
 	// subm/ans should not exist
 	shouldNotExist : function (subm, ans) {
-		should.not.exist(subm);
-		should.not.exist(ans);
+		(subm).should.not.exist(subm);
 	},
 
 	// subm/ans should Throw
-	shouldThrow : function (subm, ans) {
-		should.Throw(subm);
-		should.Throw(ans);
-	},
+	shouldThrowError : function (subm) {
+		(subm).should.Throw(Error);
+	}
 
 	// subm/ans should not throw
 	shouldNotThrow : function (subm, ans) {
 		should.not.Throw(subm);
-		should.not.Throw(ans);
 	},
 
 	// subm should equal ans
 	shouldEqual: function (subm, ans) {
 		(subm).should.equal(ans);
+	},
+
+	// subm should not equal ans
+	shouldNotEqual: function (subm, ans) {
+		(subm).should.not.equal(ans);
 	}
+
+
 
 }
