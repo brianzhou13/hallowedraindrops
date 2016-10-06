@@ -6,18 +6,34 @@
    * 
    * snippet: the input snippetitted by the testee
    * ans : the answer for that question
+   *
+   * 
+   * 
+   * All methods will have a "snippet" and "ans" variable
+   * 
+   * 
   */
 
   /* Start of the use for 'Should' */
   // snippet should deep equal ans
   // snippet is a type array
 
-  
-  /* need attention:
+
+
+  /* DEVELOPER NOTES:
+  need attention:
+    *** THESE METHODS BELOW REQUIRE 'ANS' TO BE MORE THAN JUST A VALUE (i.e. method, array, etc)
     -argumnets**
     -within (input needs to be an array(
     -isOwnProperty, ans will need to be a name
     -toHaveOwnPropertyDescriptor is not sure
+    -isSatifsying
+    -isNotSatisfying
+    -isNotCloseTo
+    -isCloseTo
+
+
+
   */
     
     
@@ -37,12 +53,12 @@ module.exports = {
 
   // snippet/ans should exist
   shouldExist : function (snippet, ans) {
-    (snippet).should.exist(snippet);
+    (snippet).should.exist;
   },
 
   // snippet/ans should not exist
   shouldNotExist : function (snippet, ans) {
-    (snippet).should.not.exist(snippet);
+    (snippet).should.not.exist;
   },
 
   // snippet/ans should Throw
@@ -52,7 +68,7 @@ module.exports = {
 
   // snippet/ans should not throw
   shouldNotThrow : function (snippet, ans) {
-    should.not.Throw(snippet);
+    (snippet).should.not.Throw;
   },
 
   // snippet should equal ans
@@ -78,102 +94,102 @@ module.exports = {
   },
   
   // snippet is a type array
-  isAnArray: function(snippet) {
+  isAnArray: function(snippet, ans) {
     expect(snippet).to.be.instanceof(Array);
   },
     
   // snippet is a type of object
-  isAnObject: function(snippet) {
+  isAnObject: function(snippet, ans) {
     expect(snippet).to.be.an('object');
   },
   
   // snippet is a null type
-  isANull: function(snippet) {
+  isANull: function(snippet, ans) {
     expect(snippet).to.be.a('null');
   },
     
   // snippet is an undefined type
-  isAUndefined: function(snippet) {
+  isAUndefined: function(snippet, ans) {
     expect(snippet).to.be.an('undefined');
   },
     
   // snippet is an error type
-  isAnError: function(snippet) {
+  isAnError: function(snippet, ans) {
     expect(snippet).to.be.an('error');
   },
     
   // snippet is a promise type
-  isAPromise: function(snippet) {
+  isAPromise: function(snippet, ans) {
     expect(snippet).to.be.a('promise');
   },
 
   // snippet is truthy
-  isTruthy: function(snippet) {
+  isTruthy: function(snippet, ans) {
     expect(snippet).to.be.ok;
   },
   
   // snippet is not truthy
-  isNotTruthy: function(snippet) {
+  isNotTruthy: function(snippet, ans) {
     expect(snippet).to.not.be.ok;
   },
   
   // snippet is of the boolean value true
-  isTrue: function(snippet) {
+  isTrue: function(snippet, ans) {
     expect(snippet).to.be.true;
   },
     
   // snippet is not of the boolean value true
-  isNotTrue: function(snippet) {
+  isNotTrue: function(snippet, ans) {
     expect(snippet).to.not.be.true;
   },
     
   // snippet is of the boolean value false
-  isFalse: function(snippet) {
+  isFalse: function(snippet, ans) {
     expect(snippet).to.be.false;
   },
     
   // snippet is not of the boolean value false
-  isNotFalse: function(snippet) {
+  isNotFalse: function(snippet, ans) {
     expect(snippet).to.not.be.false;
   },
   
   // snippet is of the value undefined
-  isUndefined: function(snippet) {
+  isUndefined: function(snippet, ans) {
     expect(snippet).to.be.undefined;
   },
   
   // snippet is not of the value undefined
-  isNotUndefined: function(snippet) {
+  isNotUndefined: function(snippet, ans) {
     expect(snippet).to.not.be.undefined;
   },
   
   // snippet is of the value null
-  isNull: function(snippet) {
+  isNull: function(snippet, ans) {
     expect(snippet).to.be.null;
   },
   
   // snippet is not of the value null
-  isNotNull: function(snippet) {
+  isNotNull: function(snippet, ans) {
     expect(snippet).to.not.be.null;
   },
   
   // snippet is NaN (not a number)
-  isNaN: function(snippet) {
+  isNaN: function(snippet, ans) {
     expect(snippet).to.be.NaN;
   },
   
   // snippet is not NaN (not a number)
-  isNotNaN: function(snippet) {
+  isNotNaN: function(snippet, ans) {
     expect(snippet).to.not.be.NaN;
   },
   
   // snippet exists
-  isExist: function(snippet) {
+  isExist: function(snippet, ans) {
     expect(snippet).to.exist;
   },
   
   // snippet has the length of 0
-  isEmpty: function(snippet) {
+  isEmpty: function(snippet, ans) {
     expect(snippet).to.be.empty;
   },
   
@@ -188,7 +204,7 @@ module.exports = {
   },
   
   // snippet is of type argument
-  isArguments: function(snippet) {
+  isArguments: function(snippet, ans) {
     expect(snippet).to.be.arguments;
   },
   
@@ -219,9 +235,11 @@ module.exports = {
   
   // snippet is within ans
   isWithin: function(snippet, ans) {
-    var bottom = ans[0];
-    var upper  = ans[1];
-    expect(snippet).to.be.within(bottom, upper);
+    // ans should be an object that will be an object with 
+      // bottom and upper as its keys
+    // var bottom = ans[0];
+    // var upper  = ans[1];
+    expect(snippet).to.be.within(/* need to fill in later */);
   },
   
   // snippet is instanceof
@@ -249,29 +267,35 @@ module.exports = {
     
     // i.e. ans could be:
     // 'length', { enumerable: false, configurable: false, writable: false, value: 4 }
-  }
-
-  ,
-  isWithinLength: function(snippet, lower_bound, upper_bound){
-    expect(snippet).to.have.length.within(lower_bound, upper_bound);
   },
 
+  // snippet is within length of upper and lower bounds
+  isWithinLength: function(snippet, ans){
+    /* fn is expecting a lower_bound and an upper_bound*/
+    expect(snippet).to.have.length.within(ans.lower, ans.upper);
+  },
+
+  // snippet has a length below ans
   isBelowLength: function(snippet, ans){
     expect(snippet).to.have.length.below(ans);
   },
 
+  // snippet has a length above ans
   isAboveLength: function(snippet, ans){
     expect(snippet).to.have.length.above(ans);
   },
 
+  // snippet does not have a length of ans
   isNotLengthOf: function(snippet, ans){
     expect(snippet).to.not.have.lengthOf(ans);
   },
 
+  // snippet has a length of ans
   isLengthOf: function(snippet, ans){
     expect(snippet).to.have.lengthOf(ans);
   },
 
+  // snippet will not match regex of ans
   willNotMatchRegex: function(snippet, ans){
     expect(snippet).to.not.match(ans);
   },
@@ -311,12 +335,12 @@ module.exports = {
     expect(snippet).to.have.any.keys(ans);
   },
 
-  // Asserts that the object or class target will respond to a method.
+  // asserts that the object or class target will respond to a method.
   isNotResponding: function(snippet, ans){
     expect(snippet).to.not.respondTo(ans);
   },
 
-  // Asserts that the object or class target will respond to a method.
+  // asserts that the object or class target will respond to a method.
   isResponding: function(snippet, ans){
     expect(snippet).to.respondTo(ans);
   },
@@ -332,28 +356,24 @@ module.exports = {
   },
 
   // Asserts that the target pass a given truth test
-  isSatisfying: function(snippet, method){
-    expect(snippet).to.satisfy(method);
+  isSatisfying: function(snippet, ans){
+    /* isSatisfying is expecting a method*/
+    expect(snippet).to.satisfy(ans);
   },
 
   // Asserts that the target does not pass a given truth test
-  isNotSatisfying: function(snippet, method){
-    expect(snippet).to.not.satisfy(method);
-  },
-
-  // Asserts that the target pass a given truth test
-  isSatisfying: function(snippet, method){
-    expect(snippet).to.satisfy(method);
+  isNotSatisfying: function(snippet, ans){
+    expect(snippet).to.not.satisfy(ans);
   },
 
   // asserts that snippet does not fall within delta of expected
-  isNotCloseTo: function(snippet, expected, delta){
-    expect(snippet).to.not.be.closeTo(expected, delta);
+  isNotCloseTo: function(snippet, ans){
+    expect(snippet).to.not.be.closeTo(/* fix */);
   },
 
   // asserts that snippet falls within delta of expected
-  isCloseTo: function(snippet, expected, delta){
-    expect(snippet).to.be.closeTo(expected, delta);
+  isCloseTo: function(snippet, ans){
+    expect(snippet).to.be.closeTo(/* fix */);
   },
 
   // asserts that the target is not a superset of set, or that the target and set do not have the same 
@@ -369,22 +389,22 @@ module.exports = {
   },
 
   // target cannot add new properties to it
-  isNotExtensible: function(snippet){
+  isNotExtensible: function(snippet, ans){
     expect(snippet).to.be.extensible;
   },
 
   // target can add new properties to it
-  isExtensible: function(snippet){
+  isExtensible: function(snippet, ans){
     expect(snippet).to.be.extensible;
   },
 
   // target cannot add new properties and existing cannot be removed.
-  isSealed: function(snippet){
+  isSealed: function(snippet, ans){
     expect(snippet).to.be.sealed;
   },
 
   // target cannot add new properties and existing cannot be modified
-  isFrozen: function(snippet){
+  isFrozen: function(snippet, ans){
     expect(snippet).to.be.frozen;
   }
 
