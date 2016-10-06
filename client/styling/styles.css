@@ -1,0 +1,219 @@
+/* HR SourceSansPro Font */
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/source-sans-pro/SourceSansPro-Regular.otf');
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/source-sans-pro/SourceSansPro-Bold.otf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/source-sans-pro/SourceSansPro-Italic.otf');
+    font-style: italic;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/source-sans-pro/SourceSansPro-BoldItalic.otf');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/source-sans-pro/SourceSansPro-Light.otf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/source-sans-pro/SourceSansPro-LightItalic.otf');
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Dark Color Editor: background-color: #303840; */
+
+/* Styles for the Editor */
+#editor { 
+    padding-top: 30px;
+    height: 970px; /* set to the height of macbook pro 13" */
+    padding-right:65px;
+    padding-left: 0;
+    width: 830px;
+    /*max-width: 50%;*/
+    /*background-color: #ccc;*/
+}
+
+
+/*div.home-bar {
+    margin-left: 255px;
+    margin-right: 255px;
+    text-align: center;
+    max-width: 100%;
+}*/
+
+div#console.home-console {
+    margin-right: -500px;
+    /*margin-left: ;*/
+}
+
+div.home-editor #editor {
+    padding-left: 0;
+}
+
+div.container {
+    /*margin: 0px;*/
+}
+
+
+/* nav-run and nav-settings are texts on the navbar in editor */
+
+.nav-tabs {
+    color: #de7c00;
+}
+
+/*div.home-middle {
+    height: 976px;
+    background-color: #303840;
+}*/
+
+/* navbar styles*/
+
+#a:hover {
+    background-color: #de7c00;
+}
+
+.navbar {
+    background-color: #303840;
+}
+
+nav.nav-tabs navbar-nav {
+    background-color: #de7c00;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top.navbar-static-top {
+    border-bottom: 0px;
+    background-color: #de7c00;
+    color: #eee;
+    font-family: SourceSansPro;
+}
+
+ul.nav.nav-tabs.navbar-nav {
+    border-bottom: 0px;
+    i
+}
+
+div.home-console {
+    float : right;
+}
+
+div.home-editor {
+    float: left;
+}
+
+.icon-bar {
+    font-size: 25px;
+}
+
+ /*Terminal Styles */
+#console-terminal-editor {
+    /*min-width: 55%;
+    /*max-width: 100%;*/
+    /*padding-top: 52px;*/
+    height: 970px;
+    width: 830px;
+    background-color:black;
+    position: absolute;
+}
+
+div#console-terminal-editor.home-console {
+    background-color: #303840;
+}
+/* The inner console element. */
+.jqconsole {
+    /*padding: 10px;*/
+    background-color: #303840;
+    border: 0px;
+}
+/* The cursor. */
+.jqconsole-cursor {
+    background-color: #eee;
+}
+/* The cursor color when the console looses focus. */
+.jqconsole-blurred .jqconsole-cursor {
+    background-color: #eee;
+}
+/* The current prompt text color */
+.jqconsole-prompt {
+    color: rgb(35, 170, 253);
+}
+/* The command history */
+.jqconsole-old-prompt {
+    color: #eee;
+    font-weight: normal;
+}
+/* The text color when in input mode. */
+.jqconsole-input {
+    color: #eee;
+}
+/* Previously entered input. */
+.jqconsole-old-input {
+    color: #eee;
+    font-weight: normal;
+}
+/* The text color of the output. */
+.jqconsole-output {
+    color: white;
+}
+
+.my-output-class {
+    color: #eee;
+}
+
+/* End for jqconsole styles */
+
+/* Styles for the Home-Page */
+.banner-text {
+	font-family: SourceSansPro;
+	font-size: 100px;
+	font-weight: 100;
+}
+
+.blue-you {
+	color: rgb(35, 170, 253);
+}
+
+.below-banner-text {
+	font-family: SourceSansPro;
+	font-size: 25px;
+	font-weight: 100;
+}
+
+.below-banner {
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+div.jumbotron {
+	text-align: center;
+	padding-top: 300px;
+	background-color: #fff;
+	padding-bottom: 50px;
+}
+
+.home-terminal {
+	font-size: 50px;
+	padding-top: 10px;
+}
+/* vertically-align the github and terminal icons on the home-page*/
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+/* navbar */
+.editor-sidebar {
+    z-index: -999;
+}
+
