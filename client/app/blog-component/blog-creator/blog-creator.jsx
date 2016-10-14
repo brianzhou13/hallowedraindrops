@@ -84,7 +84,7 @@ class BlogCreator extends React.Component {
 	submitToDB() {
 		$.ajax({
 			method: 'POST',
-			url: 'http://localhost:8080/api/blog/post/',
+			url: '/api/blog/post/',
 			data: { data: this.state.completed_user_content },
 			success: (data) => {
 				// data should be success

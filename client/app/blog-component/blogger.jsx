@@ -23,7 +23,6 @@ class Blogger extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			// empty for now
 			currentPage: 0, // the page in the array
 			currentUser: '',
 			github: [],
@@ -50,7 +49,6 @@ class Blogger extends React.Component {
 		this.setState({
 			user: url
 		});
-		console.log('hello ', url);
 		setTimeout(() => {
 			this.getGithub();
 			this.getBlog();
@@ -94,7 +92,6 @@ class Blogger extends React.Component {
 				method: 'GET',
 				url: '/api/blog/getblog/' + this.state.user,
 				success: (data) => {
-					console.log('value for data is: ', data);
 					this.setState({
 						blog: data
 					});

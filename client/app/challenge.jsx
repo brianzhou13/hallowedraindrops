@@ -89,7 +89,7 @@ class MenuWrap extends React.Component {
 	makeRequest(challenge) {
 		$.ajax({
 		  method: 'GET',
-		  url: 'http://localhost:8080/admin/challenge',
+		  url: '/admin/challenge',
 		  success: (data) => {
         store.dispatch(questionsList(data));
 		  },

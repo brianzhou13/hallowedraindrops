@@ -72,7 +72,7 @@ class Editor extends React.Component {
   sendCode() {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:8080/api/replservice/runcode',
+      url: '/api/replservice/runcode',
       data: {code: this.state.text},
       success: (data) => {
         this.socket.emit('append result', data);
@@ -89,7 +89,7 @@ class Editor extends React.Component {
     // you'd use this to get the github id on the session
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:8080/auth/github_user',
+      url: '/auth/github_user',
       success: (data) => {
         var x = JSON.stringify(data);
         var userIndex = x.search(/username/) + 13;
@@ -125,7 +125,7 @@ class Editor extends React.Component {
   testCode() {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:8080/api/replservice/testcode',
+      url: '/api/replservice/testcode',
       data: {code: this.state.text, name: this.state.current_question},
       success: (data) => {
         // var val = JSON.parse(data);
