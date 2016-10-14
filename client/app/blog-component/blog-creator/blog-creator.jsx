@@ -14,6 +14,8 @@ class BlogCreator extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+
+			// questions relating to HackReactor Experience that will be displayed on-page
 			questions: [
 			 "Describe your experience at HackReactor in one word. (going to be title of your blog article)",
 			 "Reflecting back, did HackReactor meet your expectations?",
@@ -22,6 +24,8 @@ class BlogCreator extends React.Component {
 			 "How do you feel about the technical skillset you've developed since studying at HackReactor?",
 			 "Advice you'd give for future HackReactor applicants?",
 			],
+
+			// questions' keys relating to HackReactor Experience that will be stored into the DB
 			questions_classes: [
 				"Q1",
 				"Q2",
@@ -30,6 +34,8 @@ class BlogCreator extends React.Component {
 				"Q5",
 				"Q6"
 			],
+
+			// questions that are related to the User's profile
 			questions_profile: [
 				"What is your Name",
 				"What is your Github", // adding in this to for-sure check that they entered their github handle
@@ -38,6 +44,8 @@ class BlogCreator extends React.Component {
 				"How would you describe yourself in less than 140 characters",
 				" *optional link to a banner image you want us to feature with your profile? (nyan cat, a nature photo, etc)",
 			],
+
+			// example text underneath each question
 			profile_example: [
 				"James Bond",
 				"astonmartin_destroyer123",
@@ -46,6 +54,8 @@ class BlogCreator extends React.Component {
 				"Ex-British Secret Sevice turned Software Engineer",
 				"https://images.alphacoders.com/305/30521.jpg",
 			],
+
+			// keys for the User's profile in the DB
 			profile_classes: [
 				"name",
 				"github",
@@ -54,36 +64,44 @@ class BlogCreator extends React.Component {
 				"self_blurb",
 				"banner_img",
 			],
+			
 			completed_user_content: {},
 			empty_obj: {}
 		}
 	}
 
-	// need db to be hooked
-	// need to make a request 
 	componentDidMount() {
 		console.log('the blog-creator component mounted');
 		this.addContent(); // have the on-click setup
 	}
 
+	/* 
+	 * @name: submitToDB
+	 * @input: Grabs the input from DOM and sends it into our Blog Database
+	 * @output: Data is added into our Database
+	 */ 
+
 	submitToDB() {
-		console.log('about to submit to db');
 		$.ajax({
 			method: 'POST',
-			url: 'http://localhost:8080/api/blog/post/',
+			url: '/api/blog/post/',
 			data: { data: this.state.completed_user_content },
 			success: (data) => {
-				console.log('data value submitted to the blog/testimonial database is: ', data);
+				// data should be success
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
 				console.log(textStatus, errorThrown, jqXHR);
 			}
 		});
-
 	}
 
+	/* 
+	 * @name: addContent
+	 * @input: Finds all elements of interest on the DOM
+	 * @output: the completed_user_content state is changed
+	 */ 	
+
 	addContent () {
-		// this is going to make a fetch request 
 		console.log('clicked');
 
 		var returnObj = this.state.empty_obj;
@@ -98,11 +116,9 @@ class BlogCreator extends React.Component {
     	returnObj[idOfInterest] = $('#' + idOfInterest ).find('.form-control').val();
     }
 
-    //send to server and process response
     this.setState({
     	completed_user_content: returnObj
     });
-    console.log('value for content is: ', this.state.completed_user_content);
     this.submitToDB();
 	}
 

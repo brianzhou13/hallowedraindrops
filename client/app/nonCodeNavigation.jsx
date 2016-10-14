@@ -35,7 +35,7 @@ class NonCodeNavigation extends React.Component {
 	  // you'd use this to get the github id on the session
 	  $.ajax({
 	    method: 'GET',
-	    url: 'http://localhost:8080/auth/github_user',
+	    url: '/auth/github_user',
 	    success: (data) => {
 	      var x = JSON.stringify(data);
 	      var userIndex = x.search(/username/) + 13;

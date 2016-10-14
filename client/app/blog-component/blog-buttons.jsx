@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 
 // class Blog ex
 
-// not sure if we still need this...
+// This is expected to allow the user to randomly jump from blog-to-blog

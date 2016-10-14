@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import BlogNavigation from './blog-navigation.jsx';
 import NonCodeNavigation from '../nonCodeNavigation.jsx';
 
 // react-router elements
@@ -20,19 +19,14 @@ class Blog extends React.Component {
 		super(props)
 		this.state = {
 			users: ['brianz', 'chris', 'thai'], // the users who have pages
-			allBlogs: [], // blogs is an array
+			allBlogs: [], 
 			allGithub: [],
 		}
 	}
 
 	componentDidMount () {
-		console.log('entered into the blog page');
-		this.getAllBlogs(); // call it for all of the data
+		this.getAllBlogs(); 
 		this.getAllGithub();
-		// items we need are:
-			// github_url
-			// avatar_url
-			// login
 	}
 
 	/* @name: getAllGithub
@@ -43,9 +37,9 @@ class Blog extends React.Component {
 	getAllGithub() {
 		$.ajax({
 			method: 'GET',
-			url: 'http://localhost:8080/api/blog/getallgithub/',
+			url: '/api/blog/getallgithub/',
 			success: (data) => {
-				console.log('all blogs have been retrieved: ', data);
+				console.log('data value is: ', data);
 				this.setState({
 					allGithub: data
 				});
@@ -62,12 +56,11 @@ class Blog extends React.Component {
 	 */ 
 
 	getAllBlogs() {
-		/* a fetch to get all blogs from our DB */
 		$.ajax({
 			method: 'GET',
-			url: 'http://localhost:8080/api/blog/getall/',
+			url: '/api/blog/getall/',
 			success: (data) => {
-				console.log('all blogs have been retrieved: ', data);
+				
 				this.setState({
 					allBlogs: data
 				});
@@ -76,11 +69,7 @@ class Blog extends React.Component {
 				console.log(textStatus, errorThrown, jqXHR);
 			}
 		});
-		// order them by their number of views
 	}
-
-
-	// this will purely hold all of the links to the blogger pages
 
 	/*
 	   ** in the future, we can have a filter section
@@ -93,20 +82,7 @@ class Blog extends React.Component {
 		.blog-selection-link       : Used to allow element to be clickable, but no style changes
 	*/
 
-	/* test grid:
-		<BlogNavigation></BlogNavigation>
-			<Grid>
-				<Row>
-					<Col lg ={12}>
-						<Jumbotron className="banner-blog"></Jumbotron>
-						<h1 className="banner-text-blog">BootCamp Reviews</h1>
-					</Col>
-				</Row>
-			</Grid>
-	*/
-
 	render () {
-		// console.log(this.state.allGithub[0][avatar_url]);
 		return (
 			<div className="blog-page">
 				<NonCodeNavigation></NonCodeNavigation>
@@ -142,30 +118,3 @@ class Blog extends React.Component {
 
 export default Blog;
 
-/*<div className="blog-page">
-				<BlogNavigation></BlogNavigation>
-					<Jumbotron className="banner-blog"></Jumbotron>
-					<h1 className="banner-text-blog">BootCamp Reviews</h1>
-						<Grid>
-							{this.state.blogs.map((user) => 
-								<Row>
-									<Col>
-										<Media.List>
-											<a className="blog-selection-link" href="/blog/brian"><Media.ListItem className="blog-selection blog-outline">
-												<Media.Body>
-													<Media.Heading className="blog-selection-header">A Difficult, but Very Humbling 12 Weeks</Media.Heading>
-														<span className="blog-selection-bootcamp">Brian Zhou @ HackReactor </span>
-														<br/>
-														<br/>
-														<span className="blog-selection-name">Here could be a 140 character tagline (insertion of twitter handle, pickup line, etc. etc.) ...</span>
-												</Media.Body>
-												<Media.Right>
-													<Image src="https://avatars.githubusercontent.com/u/5092263?v=3" width={64} height={64} circle/>
-												</Media.Right>
-											</Media.ListItem></a>
-										</Media.List>
-									</Col>
-								</Row>
-							)}
-						</Grid>
-			</div>*/

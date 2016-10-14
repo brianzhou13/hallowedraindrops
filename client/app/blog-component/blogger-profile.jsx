@@ -10,59 +10,26 @@ class BloggerProfile extends React.Component {
 		super(props)
 		this.state = {
 			user: '',
-			github: []
+			github: [],
 		}
 	}
 
 	componentDidMount () {
-		this.getUrl();
-		this.getGithub();
 	}
 
-	getUrl() {
-		var url = window.location.pathname.slice(6, window.location.pathname.length);
-		setTimeout(() => {
-			this.setState({
-				user: url
-			});
-			this.getGithub();
-			console.log('state for this.state.user is: ', this.state.user);
-		}, 1000)
-	}
-
-	getGithub() {
-		console.log('making request to: ', this.state.user);
-		$.ajax({
-			method: 'GET',
-			url: 'http://localhost:8080/api/blog/getgithub/' + this.state.user,
-			success: (data) => {
-				this.setState({
-					github: data
-				});
-			},
-			error: (jqXHR, textStatus, errorThrown) => {
-				console.log(textStatus, errorThrown, jqXHR);
-			}
-		});
-	}
-
-
-
-	/* the div with class 'blogger-banner-img' will be space where they can enter a photo */
 	render () {
 		return (
 			<div>
 				<Jumbotron>
 					<div className="blogger-banner-img">
-
 					</div>
 					<div className="banner-text-blog">
-						{this.props.name}
+						{this.props.blog.name}
 					</div>
 					<div>
-						<strong>Github:</strong>   www.github.com/brianzhou13
+						<strong>Github:</strong>   {this.props.profile.github_url}
 						<br/>
-						<strong>LinkedIn:</strong> www.linkedin.com 
+						<strong>LinkedIn:</strong> {this.props.blog.linkedin} 
 					</div>
 				</Jumbotron>
 			</div>

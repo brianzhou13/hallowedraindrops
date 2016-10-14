@@ -33,8 +33,7 @@ blogRouter.route('/getgithub/:githubuser')
 
 blogRouter.route('/getblog/:githubuser')
 	.get((req, res, next) => {
-		console.log('entered into github user');
-		/* need a helper fn added inside here */
+		blogController.getBlogUser(req, res);
 	})
 
 module.exports = blogRouter;

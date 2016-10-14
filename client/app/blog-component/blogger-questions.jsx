@@ -26,20 +26,37 @@ class BloggerQuestions extends React.Component {
 										 "How do you feel about the technical skillset you've developed since studying at HackReactor?",
 										 "Advice you'd give for future HackReactor applicants?",
 										 ];
-		var response = ["Humbling.",
-										"HackReactor definitely did. I came in with the goal of learning Web Development, and HackReactor has done an amazing job teaching me the subject. Since starting, I've learned multiple web frameworks and have then applied them to build 3+ fullstack applications. I'd definitely sayH HackReactor was as hard as how the alumni I spoke to prior to signing up made HackReactor to be.",
-										"Wake up. Get on Bart. Get off Bart. Code. Get on Bart. Get off Bart. Sleep.",
-										"Most memorable experience would have to be the late nights spent studying. There were times when me and a cohort-mate would be so tired on the BART ride back that we'd miss our transfer-point (BayFair to Fremont/South Hayward) and be stuck in West Dublin. Funny times.",
-										"I feel good about what I've learned here. I was browsing AngelList/LinkedIn the other day, and I noticed that many of the technical qualifications required by the hiring companies were ones that I've already had experience on or mastered at HackReactor. To be honest, I'm actually very looking forward to the job hunt.",
-										"Go for it. It's a daunting decision to make, especially if you still have a huge stack of student loans behind you from College, but you learn so much in this accelerated environment."
-										];
+		// var response = ["Humbling.",
+		// 								"HackReactor definitely did. I came in with the goal of learning Web Development, and HackReactor has done an amazing job teaching me the subject. Since starting, I've learned multiple web frameworks and have then applied them to build 3+ fullstack applications. I'd definitely sayH HackReactor was as hard as how the alumni I spoke to prior to signing up made HackReactor to be.",
+		// 								"Wake up. Get on Bart. Get off Bart. Code. Get on Bart. Get off Bart. Sleep.",
+		// 								"Most memorable experience would have to be the late nights spent studying. There were times when me and a cohort-mate would be so tired on the BART ride back that we'd miss our transfer-point (BayFair to Fremont/South Hayward) and be stuck in West Dublin. Funny times.",
+		// 								"I feel good about what I've learned here. I was browsing AngelList/LinkedIn the other day, and I noticed that many of the technical qualifications required by the hiring companies were ones that I've already had experience on or mastered at HackReactor. To be honest, I'm actually very looking forward to the job hunt.",
+		// 								"Go for it. It's a daunting decision to make, especially if you still have a huge stack of student loans behind you from College, but you learn so much in this accelerated environment."
+		// 								];
 
 
 		this.state = {
 			questions: questions,
-			response: response
+			responses: '',
+			// github: [],
+			// blog: [],
+			// user: '',
 		}
+	}
 
+	componentDidMount() {
+		setTimeout(() => {
+			console.log(this.props.blog);
+			this.setState({
+				responses: [
+				this.props.blog.Q1,
+				this.props.blog.Q2,
+				this.props.blog.Q3,
+				this.props.blog.Q4,
+				this.props.blog.Q5,
+				this.props.blog.Q6 ]
+			});
+		}, 1700);
 	}
 
 
@@ -51,7 +68,7 @@ class BloggerQuestions extends React.Component {
 	// Need a date item
 
 	render () {
-		var responses = this.state.response;
+		var responses = this.state.responses;
 		return (
 			<div>
 				{this.state.questions.map(function(ques, i) {
@@ -60,7 +77,6 @@ class BloggerQuestions extends React.Component {
 					 *         "i"    - index of the question that was asked
 					 * @output: a div element wrapping each question
 					 */
-					
 					return (
 						// return styled element
 						<Media.List>
