@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+// boot
 import Glyphicon from 'react-bootstrap/lib/Glyphicon.js';
 import NavBar from 'react-bootstrap/lib/Navbar.js';
 import Nav from 'react-bootstrap/lib/Nav.js';
@@ -16,7 +17,7 @@ class BlogNavigation extends React.Component {
 	componentDidMount() {
 	}
 
-	render () { // we also need to build the nav bar on the right
+	render () {
 		return (
 		  <div> 
 		  	<NavBar fixedTop fluid staticTop className="blog-nav">

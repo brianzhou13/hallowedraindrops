@@ -8,6 +8,10 @@ class TestEntry extends React.Component{
   constructor(props) {
     super(props);
 
+    /* below are options available when creating a test through our
+     * testing service
+     */
+
     this.option = [
         'shouldExist',
         'shouldNotExist',

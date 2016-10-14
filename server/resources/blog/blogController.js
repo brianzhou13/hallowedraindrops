@@ -17,18 +17,32 @@ var User = require('../../database/models/Users.js');
 
 module.exports = {
 
+	
+	getBlogUser: (req, res) => {
+		var login = ' ' + req.url.slice(9, req.url.length);
+		// we require a 'space' in the front for it to be recognized
+		BlogQuestion.find({where: {github: login}}).then((data) => {
+			if(data) {
+				res.status(200).send(data);
+			} else {
+				res.status(404).send('error');
+			}
+		});
+	},
+
 	getGithubUser: (req, res) => {
 		var login = req.url.slice(11, req.url.length);
-
-		User.find({login: login}).then((data) => {
-			console.log('found all github-user information');
-			res.status(200).send(data);
+		User.find({where: {login: login}}).then((data) => {
+			if(data) {
+				res.status(200).send(data);
+			} else {
+				res.status(404).send('error');
+			}
 		});
 	},
 
 	getAllGithub: (req, res) => {
 		User.findAll({}).then((data) => {
-			console.log('found all github-user information');
 			res.status(200).send(data);
 		});
 	},
@@ -59,7 +73,6 @@ module.exports = {
 		BlogQuestion.sync().then(() => {
 			BlogQuestion.find({where: {github: github}})
 			.then((data) => {
-				console.log('data value is: ', data);
 				if(!data) {
 					BlogQuestion.create(dataToBeAdded).then(() => {
 						console.log('entry has been created');
