@@ -112,7 +112,7 @@ class Editor extends React.Component {
     $.ajax({
       method: 'POST',
       data: {code: this.state.text },
-      url: 'https://pacific-caverns-88696.herokuapp.com/api/analytics/' + this.state.github + '/' + this.state.current_question,
+      url: 'https://pacific-caverns-88696.herokuapp.com/api/analytics' + this.state.github + '/' + this.state.current_question,
       success: (data) => {
         // console.log('success in sending to analytics');
       },
